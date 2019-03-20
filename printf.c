@@ -42,7 +42,7 @@ int _printf(const char *format, ...)
 		}
 		if (format[i] != '\0')
 		{
-			putchar(format[i]);
+			_putchar(format[i]);
 			chrcounter++;
 			i++;
 		}
