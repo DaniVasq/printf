@@ -9,11 +9,12 @@ int print_str(va_list s);
 int (*find_value(char n))(va_list);
 int print_percent(va_list __attribute__((unused)) percent);
 /**
+ * struct lo - function
+ * @chr: pointer to string
+ * @f: pointer to function
  *
  *
- *
- *
-*/
+ */
 
 typedef struct lo
 {
