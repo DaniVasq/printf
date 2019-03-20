@@ -38,11 +38,24 @@ int print_str(va_list s)
 	int i;
 	char *str = va_arg(s, char *);
 
-	for (i = 0; str[i] != '\0'; i++)
+	if (str != NULL)
 	{
-		_putchar(str[i]);
+		for (i = 0; str[i] != '\0'; i++)
+		{
+			_putchar(str[i]);
+		}
 	}
-	return (i - 1);
+	else
+	{
+		_putchar('(');
+		_putchar('n');
+		_putchar('u');
+		_putchar('l');
+		_putchar('l');
+		_putchar(')');
+		return (6);
+	}
+	return (i);
 }
 
 /**
@@ -62,7 +75,7 @@ int (*find_value(char n))(va_list)
 		{NULL, NULL}
 	};
 
-	while (i <= 3)
+	while (i <= 2)
 	{
 		if (n == *(ftr[i].chr))
 			return (ftr[i].f);
@@ -72,7 +85,7 @@ int (*find_value(char n))(va_list)
 }
 
 /**
- * print_percent - Functio to print a '%'.
+ * print_percent - Function to print a '%'.
  * @percent: va_list to recieve.
  * Return: Number of printed characters, always (1).
  */

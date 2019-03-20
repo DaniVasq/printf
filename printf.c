@@ -14,6 +14,9 @@ int _printf(const char *format, ...)
 	int chrcounter = 0, i = 0;
 
 	va_start(args, format);
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
+
 	while (format[i] != '\0')
 	{
 		while ((format[i] != '%') && (format[i + 1] != '\0'))
@@ -25,11 +28,24 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			chrcounter += (find_value(format[i]))(args);
+			if (find_value(format[i]) == NULL)
+			{
+				_putchar('%');
+				_putchar(format[i]);
+				chrcounter = chrcounter + 2;
+			}
+			else
+			{
+				chrcounter += (find_value(format[i]))(args);
+			}
 			i++;
 		}
-		_putchar(format[i]);
-		i++;
+		if (format[i] != '\0')
+		{
+			putchar(format[i]);
+			chrcounter++;
+			i++;
+		}
 	}
 	return (chrcounter);
 }
